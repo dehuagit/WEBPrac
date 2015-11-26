@@ -1,0 +1,65 @@
+<html ng-app="Store">
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script src="js/angular.min.js"></script>
+    <script src="js/example7.js"></script>
+    <script src="js/product.js"></script>
+    <style>
+    .ng-invalid.ng-dirty{border-color:#FA787E;}
+    .ng-valid.ng-dirty{border-color:#78FA89;}
+    
+    </style>
+   
+  </head>
+  <body ng-controller="StoreController as store">
+     <ul class="list-group">
+     	<li class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
+     	  
+     	  <product-title></product-title>
+     	  
+     	  	<img ng-src="{{product.images[0].thumb}}"/>
+     	  	 
+     	  	<product-panel></product-panel>
+     	  		<h4>Reviews</h4>
+     	  		<blockquote ng-repeat="review in product.reviews">
+     	  			<b>stars: {{review.starts}}</b>
+     	  			{{review.body}}
+     	  			<cite>by: {{review.author}}</cite>
+     	  		</blockquote>
+     	  		
+     	  		<form name="reviewForm" ng-controller="ReviewController as reviewCtrl"  ng-submit="reviewCtrl.addReview(product)"  >
+     	  			<blockquote>
+     	  				<b>stars: {{reviewCtrl.review.starts}}</b>
+     	  				{{reviewCtrl.review.body}}
+     	  				<cite>by: {{reviewCtrl.review.author}}</cite>
+     	  			</blockquote>
+     	  		
+     	  			<select ng-model="reviewCtrl.review.starts"  required>
+     	  				<option value="1" > 1 star</option>
+     	  				<option ng-selected="true" value="2" selected> 2 star</option>
+     	  			</select>
+     	  			<div>
+     	  				<textarea ng-model="reviewCtrl.review.body" required></textarea>
+     	  			</div>
+     	  			<div>
+	     	  			<label>by:</label>
+	     	  			<input ng-model="reviewCtrl.review.author" type="email" class="ng-pristine ng-invalid" required/>
+     	  			</div>
+     	  			
+     	  			<div>reviewForm is {{reviewForm.$valid}} </div>
+     	  			
+     	  			<input type="submit" value="Submit" />
+     	  			
+     	  		</form>
+     	  		
+     	  	
+     	  </h3>
+     	</li>
+     </ul>
+     
+    
+     
+     
+  </body>
+  
+</html>

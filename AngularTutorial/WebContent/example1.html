@@ -1,0 +1,18 @@
+<html ng-app="Store">
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script src="js/angular.min.js"></script>
+    <script src="js/example1.js"></script>
+  </head>
+  <body ng-controller="StoreController as store"  >
+  
+   <div ng-repeat="product in store.products">
+    <h1> {{product.name}} </h1>
+    <h2>${{product.price}} </h2>
+    <p> {{product.description}}</p>
+    <button ng-show="product.canPurchase" >Add to Cart </button>
+    
+   </div>
+  </body>
+  
+</html>

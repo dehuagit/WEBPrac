@@ -1,0 +1,32 @@
+<html ng-app="Store">
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script src="js/angular.min.js"></script>
+    <script src="js/example3.js"></script>
+  </head>
+  <body ng-controller="StoreController as store">
+     <ul class="list-group">
+     	<li class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
+     	  <h3>
+     	  	{{product.name}}
+     	  	<em class="pull-right">{{product.price|currency}}</em>
+     	  	<img ng-src="{{product.images[0].thumb}}"/>
+     	  </h3>
+     	</li>
+     </ul>
+     
+     <section>
+	     <ul class="nav nav-pills">
+	     	<li> <a href>Description </a></li>
+	     	<li> <a href>Specifications </a></li>
+	     	<li> <a href>Reviews </a></li>
+	     </ul>
+     </section>
+     
+     
+     
+     
+     
+  </body>
+  
+</html>
